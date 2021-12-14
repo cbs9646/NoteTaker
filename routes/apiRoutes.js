@@ -36,17 +36,4 @@ apiRoute.get('/api/notes', (req, res) =>
     }
   });
   
-  module.exports = apiRoute;
-  
-
-
-
-
-
-
-
-
-
-
-
 module.exports = apiRoute;
