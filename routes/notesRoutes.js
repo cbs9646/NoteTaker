@@ -5,7 +5,6 @@ const { writeToFile } = require('../helpers/fsUtils');
 const { uuid } = require('../helpers/uuid');
 
 notes.get('/:id', (req, res) => { 
-    
 const noteId = req.params.id;
 readFromFile('./db/db.json').then((n_data) => JSON.parse(n_data))
    .then((json) => {
