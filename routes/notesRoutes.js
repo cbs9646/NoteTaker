@@ -2,7 +2,7 @@ const notes = require('express').Router();
 const { readAndAppend } = require('../helpers/fsUtils');
 const { readFromFile } = require('../helpers/fsUtils');
 const { writeToFile } = require('../helpers/fsUtils');
-const { uuid } = require('../helpers/uuid');
+const { uuid } = require('uuidv4');
 
 notes.get('/:id', (req, res) => { 
 const noteId = req.params.id;
