@@ -1,12 +1,17 @@
 const notes = require('express').Router();
-const { readAndAppend } = require('../helpers/fsUtils');
-const { readFromFile } = require('../helpers/fsUtils');
-const { writeToFile } = require('../helpers/fsUtils');
-const { uuid } = require('uuidv4');
+const { readFromFile, readAndAppend, writeToFile} = require('../helpers/fsUtils');
+const { v4: uuidv4 } = require('uuid');
+
+notes.get('/', (req, res) => {
+    readFromFile('./db/db.json')
+    .then((n_data) => res.json(JSON.parse(n_data)));
+});
+
 
 notes.get('/:id', (req, res) => { 
 const noteId = req.params.id;
-readFromFile('./db/db.json').then((n_data) => JSON.parse(n_data))
+readFromFile('./db/notes.json')
+.then((n_data) => JSON.parse(n_data))
    .then((json) => {
      const result = json.filter((n_data) => n_data.id === noteId);
     return result.length > 0
@@ -15,17 +20,15 @@ readFromFile('./db/db.json').then((n_data) => JSON.parse(n_data))
    });
  });
 
-notes.get('/', (req, res) => {
-    readFromFile('./db/db.json').then((n_data) => res.json(JSON.parse(n_data)));
-});
+
 notes.delete('/:id', (req,res) => {
 
   const noteId = req.params.id;
   readFromFile(".db/db.json")
   .then((notes) => JSON.parse(notes))
   .then((json) => {
-    const result = json.filter((noteS) => noteS.id !== noteId);
-
+    const result = json.filter((note) => note.id !== noteId);
+   
     writeToFile("./db/db.json", result);
 
     res.json(`old note ${noteId} was deleted`);
@@ -34,28 +37,28 @@ notes.delete('/:id', (req,res) => {
 });
 
 notes.post('/', (req, res) => {
-    
+    console.log(req.body);
     const { title, text, id } = req.body;
-  
-    
+      
     if (req.body) {
       
-      const newNotes = {
+      const newNote = {
         title,
         text,
-        newNote_id: uuid(),
+        id: uuidv4(),
       };
   
-      readAndAppend(newNotes, './db/db.json');
+      readAndAppend(newNote, './db/db.json');
   
       const response = {
         status: 'success',
-        body: newNotes,
+        body: newNote,
       };
   
       res.json(response);
     } else {
-      res.json('Error posting new note');
+      res.error('Error posting new note');
+      console.log(error);
     }
   });
   
