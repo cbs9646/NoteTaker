@@ -1,19 +1,19 @@
-const notes = require('express').Router();
+const ns = require('express').Router();
 const { readFromFile, readAndAppend, writeToFile} = require('../helpers/fsUtils');
 const { v4: uuidv4 } = require('uuid');
 
-notes.get('/', (req, res) => {
+ns.get('/', (req, res) => {
     readFromFile('./db/db.json')
-    .then((n_data) => res.json(JSON.parse(n_data)));
+    .then((notes) => res.json(JSON.parse(notes)));
 });
 
 
-notes.get('/:id', (req, res) => { 
+ns.get('/:id', (req, res) => { 
 const noteId = req.params.id;
-readFromFile('./db/notes.json')
-.then((n_data) => JSON.parse(n_data))
+readFromFile('./db/db.json')
+.then((notes) => JSON.parse(notes))
    .then((json) => {
-     const result = json.filter((n_data) => n_data.id === noteId);
+     const result = json.filter((note) => note.id === noteId);
     return result.length > 0
     ? res.json(result)
     : res.json("no note with that ID number");
@@ -21,10 +21,10 @@ readFromFile('./db/notes.json')
  });
 
 
-notes.delete('/:id', (req,res) => {
+ns.delete('/:id', (req,res) => {
 
   const noteId = req.params.id;
-  readFromFile(".db/db.json")
+  readFromFile('.db/db.json')
   .then((notes) => JSON.parse(notes))
   .then((json) => {
     const result = json.filter((note) => note.id !== noteId);
@@ -40,7 +40,7 @@ notes.post('/', (req, res) => {
     console.log(req.body);
     const { title, text, id } = req.body;
       
-    if (req.body) {
+    if (title && text) {
       
       const newNote = {
         title,
@@ -62,4 +62,4 @@ notes.post('/', (req, res) => {
     }
   });
   
-module.exports = notes;
+module.exports = ns;
