@@ -25,6 +25,11 @@ Install by forking this repository, installing dependencies and running by enter
   
 Create a new note by typing in text into the text box. Save and create a new note by selecting the Plus sign in the upper right corner.
 
+
+## Screenshot
+
+![image](https://user-images.githubusercontent.com/9369467/151564463-ba516b20-f568-448c-aec1-eb564c492474.png)
+
   ## License
 
 [MIT](https://opensource.org/licenses/MIT) License
