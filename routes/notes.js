@@ -24,7 +24,7 @@ readFromFile('./db/db.json')
 ns.delete('/:id', (req,res) => {
 
   const noteId = req.params.id;
-  readFromFile('.db/db.json')
+  readFromFile('./db/db.json')
   .then((notes) => JSON.parse(notes))
   .then((json) => {
     const result = json.filter((note) => note.id !== noteId);
