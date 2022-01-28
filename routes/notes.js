@@ -1,11 +1,11 @@
 const ns = require('express').Router();
-const { readFromFile, readAndAppend, writeToFile} = require('../helpers/fsUtils');
+const { readFromFile, writeToFile, readAndAppend } = require('../helpers/fsUtils');
 const { v4: uuidv4 } = require('uuid');
 
-ns.get('/', (req, res) => {
+ns.get('/', (req, res) => 
     readFromFile('./db/db.json')
-    .then((notes) => res.json(JSON.parse(notes)));
-});
+    .then((notes) => res.json(JSON.parse(notes)))
+);
 
 
 ns.get('/:id', (req, res) => { 
