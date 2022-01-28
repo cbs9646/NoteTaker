@@ -36,7 +36,7 @@ ns.delete('/:id', (req,res) => {
   });
 });
 
-notes.post('/', (req, res) => {
+ns.post('/', (req, res) => {
     console.log(req.body);
     const { title, text, id } = req.body;
       
