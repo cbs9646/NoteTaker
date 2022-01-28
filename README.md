@@ -20,13 +20,13 @@ This program uses Heroku and Express.js to provide the ability to make and delet
   ## Installation
 
 Install by forking this repository, installing dependencies and running by entering node server.js into the command line. You can also go to Heroku here: https://pacific-reaches-24360.herokuapp.com/
-<<<<<<< HEAD
+
 
   ## Usage
   
 Create a new note by typing in text into the text box. Save and create a new note by selecting the Plus sign in the upper right corner.
 =======
->>>>>>> e3f3e82bde3462c8974d54dd56de33921fe3262f
+
 
   ## Usage
   
