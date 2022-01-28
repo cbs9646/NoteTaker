@@ -32,7 +32,7 @@ Create a new note by typing in text into the text box. Save and create a new not
   
 Create a new note by typing in text into the text box. Save and create a new note by selecting the Plus sign in the upper right corner.
 
-<<<<<<< HEAD
+
 ## Screenshot
 
 ![image](https://user-images.githubusercontent.com/9369467/151564463-ba516b20-f568-448c-aec1-eb564c492474.png)
@@ -90,5 +90,5 @@ Please reach out directly to me either by Github or email.
 charliestedman@yahoo.com
    
 
->>>>>>> e3f3e82bde3462c8974d54dd56de33921fe3262f
+
 2021
